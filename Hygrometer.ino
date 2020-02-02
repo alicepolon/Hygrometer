@@ -4,7 +4,7 @@
 #define DHTPIN 7
 #define DHTTYPE DHT11
 #define MAX_HUMIDITY 65
-#define INTERVALL_SECONDS 180000 //5 Minutes
+#define INTERVALL_SECONDS 300000 //5 Minutes
 
 const int buzzer = 8;
 
