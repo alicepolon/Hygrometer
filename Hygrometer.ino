@@ -2,21 +2,24 @@
 #include <LiquidCrystal.h>
 
 #define DHTPIN 7
-#define DHTTYPE DHT11
-#define MAX_HUMIDITY 65
-#define INTERVALL_SECONDS 300000 //5 Minutes
 
+// the sensor type: DHT11 or DHT22
+#define DHTTYPE DHT22
+#define MAX_HUMIDITY 65
+//5 Minutes intervall
+#define INTERVALL_SECONDS 300000 
+
+//buzzer PIN
 const int buzzer = 8;
 
-// initialize sensor DHT11
+//dht(pin, type)
 DHT dht(DHTPIN, DHTTYPE);
 
-// initialize the library with the numbers of the interface pins
+//LiquidCrystal(rs, enable, d4, d5, d6, d7) 
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 //last alarm time
 unsigned long lastAlarmTime = 0;
-
 //current alarm time
 unsigned long currAlarmTime;
 
@@ -41,19 +44,8 @@ void loop() {
   float h = dht.readHumidity();
   float t = dht.readTemperature();
 
-  //TODO: function
-  lcd.setCursor(0, 0);
-  lcd.print("Temperature = ");
-  lcd.print(t);
-  lcd.setCursor(0, 1);
-  lcd.print("Humidity = ");
-  lcd.print(h);
-
-  //TODO: function
-  Serial.print("Temperature = ");
-  Serial.println(t);
-  Serial.print("Humidity = ");
-  Serial.println(h);
+  printOnConsole(h, t);
+  printOnLcd(h, t);
 
   // if the humitidy is bigger than the max acceppted
   if( h >= MAX_HUMIDITY ) {
@@ -68,11 +60,25 @@ void loop() {
         delay(1000);  //for 1 second
       }
 
-      noTone(buzzer);
+      noTone(buzzer); //stop sound
         
     }
   }
+}
 
-  Serial.print("New cicle: ");
+void printOnConsole(float h, float t) {
+  Serial.print("Temperature = ");
+  Serial.println(t);
+  Serial.print("Humidity = ");
+  Serial.println(h);
   Serial.println(millis());
+}
+
+void printOnLcd(float h, float t) {
+  lcd.setCursor(0, 0);
+  lcd.print("Temperature = ");
+  lcd.print(t);
+  lcd.setCursor(0, 1);
+  lcd.print("Humidity = ");
+  lcd.print(h);
 }
