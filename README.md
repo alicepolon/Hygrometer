@@ -1,4 +1,4 @@
-# Hygrometer
+# Hygrometer thermometer Igormeter
 
 ## Components:
 Arduino 
