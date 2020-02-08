@@ -25,8 +25,11 @@ The showOnly mode consists of only showing the value of temperature and humidity
 The humidityAlarm mode is also emitting a sound if the humidity value is over the threshold.
 
 Press 1 to use it in showOnly mode
+
 Press 2 to use it in humidityAlarm mode
+
 Press FUNC and << or >> to change the threshold
+
 Press 0 for the credits
 
 
