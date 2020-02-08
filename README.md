@@ -43,7 +43,7 @@ Error compiling for board Arduino Uno.
 To solve this it is necessary to change a timer pin value in the IRemote Library.
 Go to Arduino -> Library -> IRemote folder
 edit boarddefs.h (or in the old versions IRemoteinit.h)
-and uncomment (for Arduino Uno in this case) the IR_USE_TIMER2.
+and uncomment (for Arduino Uno in this case) the IR_USE_TIMER1.
 
 From
 ```
